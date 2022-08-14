@@ -1,0 +1,1649 @@
+﻿SET UPDATECALC OFF;
+
+/*
+Change "中信矿业国际有限公司" to "中信澳矿"
+Generate Sino Iron
+*/
+
+/* BUGFIX00012 2015-09-18a */
+/* 版本 */
+/*
+FIX("上年预计","本年预算","明年预测","后年预测",&CurVersion,&CurYear,@RELATIVE ("YearTotal",0),"BegBalance","HSP_InputValue","Local")
+  FIX ("")
+     CLEARBLOCK ALL;
+  ENDFIX
+ENDFIX
+*/
+
+FIX(&CurVersion,&CurYear,"HSP_InputValue","Local")
+ FIX("中信澳矿")
+  FIX(@RELATIVE ("YearTotal",0),"BegBalance")
+   /********************************** Budget Section *******************************/
+    FIX("本年预算") /* Budget Start */
+	 FIX("不分类别") /* No Element Start */
+	  FIX("不分综合") /* No Misc Start */
+	    FIX("不分项目") /* No Project Start */		 
+		  FIX("不分产品") /* No Product Start */
+		     SET CREATENONMISSINGBLK ON;
+	         /****************************/
+		     /* A02 Balance Sheet Master */
+		     /****************************/
+		     "货币资金" = @XREF(CP,"BJBSA020000030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "存放中央银行款项" = @XREF(CP,"BJBSA020000040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "存放同业款项" = @XREF(CP,"BJBSA020000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "拆出资金" = @XREF(CP,"BJBSA020000060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "短期金融投资-以公允价值计量且其变动计入当期损益" = @XREF(CP,"BJBSA020000070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* 20180911a */
+             "短期金融投资-以公允价值计量且变动计入其他综合收益的权益投资" = @XREF(CP,"BJBSA020000071","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "短期金融投资-以摊余成本计量的债权投资" = @XREF(CP,"BJBSA020000072","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+		     "短期衍生金融资产" = @XREF(CP,"BJBSA020000080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "买入返售金融资产" = @XREF(CP,"BJBSA020000090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "发放短期贷款及垫款" = @XREF(CP,"BJBSA020000100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应收票据" = @XREF(CP,"BJBSA020000110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应收股利(利润)" = @XREF(CP,"BJBSA020000120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 /* change 20190909a */
+		     /* "应收利息" = @XREF(CP,"BJBSA020000130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		     "应收账款" = @XREF(CP,"BJBSA020000140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "预付款项" = @XREF(CP,"BJBSA020000150","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其他应收款" = @XREF(CP,"BJBSA020000160","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "存货" = @XREF(CP,"BJBSA020000170","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:建造合同已完工未结算款项" = @XREF(CP,"BJBSA020000180","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* 20180911a */
+			 "合同资产" = @XREF(CP,"BJBSA020000185","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+		     "一年内到期的非流动资产" = @XREF(CP,"BJBSA020000190","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其他流动资产" = @XREF(CP,"BJBSA020000200","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "持有待售资产" = @XREF(CP,"BJBSA020000210","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		     "发放长期贷款及垫款" = @XREF(CP,"BJBSA020000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* 20180911a */
+             "长期金融投资-以公允价值计量且其变动计入当期损益" = @XREF(CP,"BJBSA020000235","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+		     /* "长期金融资产投资-以公允价值计量且其变动计入其他综合收益" = @XREF(CP,"BJBSA020000240","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			 "长期金融投资-以公允价值计量且变动计入其他综合收益的权益投资" = @XREF(CP,"BJBSA020000240","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期金融投资-以摊余成本计量的债权投资" = @XREF(CP,"BJBSA020000250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     /* "应收款项类投资" = @XREF(CP,"BJBSA020000260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			 
+		     "长期应收款" = @XREF(CP,"BJBSA020000270","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期股权投资" = @XREF(CP,"BJBSA020000280","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:对联营企业的投资" = @XREF(CP,"BJBSA020000290","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:对合营企业的投资" = @XREF(CP,"BJBSA020000300","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "投资性房地产" = @XREF(CP,"BJBSA020000310","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "固定资产" = @XREF(CP,"BJBSA020000320","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "在建工程" = @XREF(CP,"BJBSA020000330","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "无形资产" = @XREF(CP,"BJBSA020000340","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:土地使用权" = @XREF(CP,"BJBSA020000350","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "商誉" = @XREF(CP,"BJBSA020000360","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期待摊费用" = @XREF(CP,"BJBSA020000370","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "递延所得税资产" = @XREF(CP,"BJBSA020000380","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期衍生金融资产" = @XREF(CP,"BJBSA020000390","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其他非流动资产" = @XREF(CP,"BJBSA020000400","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		     "吸收短期存款" = @XREF(CP,"BJBSA020000440","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "向中央银行借款" = @XREF(CP,"BJBSA020000450","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "同业及其他金融机构存放款项" = @XREF(CP,"BJBSA020000460","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "拆入资金" = @XREF(CP,"BJBSA020000470","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "以公允价值计量且变动计入当期损益的金融负债" = @XREF(CP,"BJBSA020000480","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "短期衍生金融负债" = @XREF(CP,"BJBSA020000490","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "卖出回购金融资产款" = @XREF(CP,"BJBSA020000500","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应付票据" = @XREF(CP,"BJBSA020000510","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应付股利(利润)" = @XREF(CP,"BJBSA020000520","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 /* change 20190909a */
+		     /* "应付利息" = @XREF(CP,"BJBSA020000530","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		     "应付账款" = @XREF(CP,"BJBSA020000540","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "预收款项" = @XREF(CP,"BJBSA020000550","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:建造合同已结算未完工款项" = @XREF(CP,"BJBSA020000560","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* 20180911a */
+             "合同负债" = @XREF(CP,"BJBSA020000565","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "优先股" = @XREF(CP,"BJBSA020000805","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+		     "其他应付款" = @XREF(CP,"BJBSA020000570","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应付职工薪酬" = @XREF(CP,"BJBSA020000580","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应交税费" = @XREF(CP,"BJBSA020000590","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其中:应交所得税" = @XREF(CP,"BJBSA020000600","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "其中:应交土地增值税" = @XREF(CP,"BJBSA020000610","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "短期借款" = @XREF(CP,"BJBSA020000620","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应付短期债券" = @XREF(CP,"BJBSA020000630","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "一年内到期的长期借款" = @XREF(CP,"BJBSA020000640","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "一年内到期的应付长期债券" = @XREF(CP,"BJBSA020000650","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		 
+		     "一年内到期的其他非流动负债" = @XREF(CP,"BJBSA020000660","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "其他流动负债" = @XREF(CP,"BJBSA020000670","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "持有待售负债" = @XREF(CP,"BJBSA020000680","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+             "吸收长期存款" = @XREF(CP,"BJBSA020000700","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期借款" = @XREF(CP,"BJBSA020000710","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "应付长期债券" = @XREF(CP,"BJBSA020000720","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期应付款" = @XREF(CP,"BJBSA020000730","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "预计负债" = @XREF(CP,"BJBSA020000740","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "递延所得税负债" = @XREF(CP,"BJBSA020000750","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "长期衍生金融负债" = @XREF(CP,"BJBSA020000760","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "其他非流动负债" = @XREF(CP,"BJBSA020000770","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		     "实收资本(或股本)" = @XREF(CP,"BJBSA020000800","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "永久资本证券" = @XREF(CP,"BJBSA020000810","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "资本公积" = @XREF(CP,"BJBSA020000820","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+             /* BUGFIX00001 2-SEP-2015 */
+             "其他综合收益." = @XREF(CP,"BJBSA020000830","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     
+			 "盈余公积" = @XREF(CP,"BJBSA020000840","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "一般风险准备" = @XREF(CP,"BJBSA020000850","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		     "未分配利润" = @XREF(CP,"BJBSA020000860","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* BUGFIX00001 2-SEP-2015 */
+             /* "其他综合收益." = @XREF(CP,"BJBSA020000870","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		 
+             "少数股东权益" = @XREF(CP,"BJBSA020000890","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* Add Account Map 20160916 */
+			 "减：库存股"   = @XREF(CP,"BJBSA020000822","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			 
+			 /* "其中:有息负债" = @XREF(CP,"BJPLA030000510","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+
+			/* 20190326 */
+			"租赁使用权资产" = @XREF(CP,"BJBSA020000325","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");	 
+			"短期租赁负债" = @XREF(CP,"BJBSA020000545","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		 
+			"长期租赁负债" = @XREF(CP,"BJBSA020000735","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		 
+			 
+             /******************/
+		     /* A03 PNL Master */
+		     /******************/
+			  /* change 20170814 */
+			  /* "营业税金及附加" = @XREF(CP,"BJPLA030000060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  "税金及附加" = @XREF(CP,"BJPLA030000060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      
+			  "其中:土地增值税" = @XREF(CP,"BJPLA030000070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "资产减值损失" = @XREF(CP,"BJPLA030000110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:发放贷款和垫款资产减值损失" = @XREF(CP,"BJPLA030000120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /* 20180911a */
+              "研发费用" = @XREF(CP,"BJPLA030000095","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "信用减值损失" = @XREF(CP,"BJPLA030000115","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "净敞口套期收益" = @XREF(CP,"BJPLA030000171","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "资产处置收益" = @XREF(CP,"BJPLA030000172","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /* change 20190909a */
+              /* "金融资产投资(以公允价值计量且其变动计入其他综合收益)信用减值准备" = @XREF(CP,"BJPLA030000325","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+		      "公允价值变动收益" = @XREF(CP,"BJPLA030000130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:投资性房地产重估收益" = @XREF(CP,"BJPLA030000140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "营业外收入" = @XREF(CP,"BJPLA030000190","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "营业外支出" = @XREF(CP,"BJPLA030000200","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+		      /* "其中:非流动资产处置损失" = @XREF(CP,"BJPLA030000210","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+		      "所得税费用" = @XREF(CP,"BJPLA030000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /* change 20190909a */
+		      /* "永久资本证券持有人的净利润" = @XREF(CP,"BJPLA030000260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  "归属于母公司所有者持续经营净利润" = @XREF(CP,"BJPLA030000250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "归属于非控制性权益持续经营净利润" = @XREF(CP,"BJPLA030000270","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "基本每股收益(元)" = @XREF(CP,"BJPLA030000290","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "稀释每股收益(元)" = @XREF(CP,"BJPLA030000300","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      /* change 20190909a */
+			  /* "金融资产投资(以公允价值计量且其变动计入其他综合收益)公允价值变动" = @XREF(CP,"BJPLA030000320","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  /* change 20190909a */
+		      /* "现金流量套期:套期储备变动" = @XREF(CP,"BJPLA030000330","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  /* change 20190909a */
+		      /* "所占联营及合营企业的其他综合收益" = @XREF(CP,"BJPLA030000340","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		      /* "其他综合收益-外币报表折算差额" = @XREF(CP,"BJPLA030000350","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              /* "本年其他综合收益(税后净额)" = @XREF(CP,"BJPLA030000360","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		      /* "永久资本证券持有人的综合收益总额" = @XREF(CP,"BJPLA030000390","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              "归属于少数股东的综合收益总额" = @XREF(CP,"BJPLA030000400","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");        
+              "非经常性损益(扣除所得税影响)" = @XREF(CP,"BJPLA030000367","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+              /* Add Account Map 20160916 */
+			  
+			  /* "其中:非流动资产处置利得"            = @XREF(CP,"BJPLA030000192","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  "归属于母公司所有者持续经营其他综合收益" = @XREF(CP,"BJPLA030000362","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "归属于非控制性权益持续经营其他综合收益"   = @XREF(CP,"BJPLA030000364","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /* Add 20170814a */
+			  "其他收益" = @XREF(CP,"BJPLA030000175","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+              /* Add 20180816a */			  
+              "综合收益总额"                   = @XREF(CP,"BJPLA030000370","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "归属于母公司股东的综合收益总额" = @XREF(CP,"BJPLA030000380","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              /* "永久资本证券持有人的综合收益总额" = @XREF(CP,"BJPLA030000390","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              "归属于少数股东的综合收益总额" = @XREF(CP,"BJPLA030000400","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /* add 20190909 */
+			  "归属于母公司所有者终止经营净利润" = @XREF(CP,"BJPLA030000271","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "归属于非控制性权益终止经营净利润" = @XREF(CP,"BJPLA030000272","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "归属于母公司所有者终止经营其他综合收益" = @XREF(CP,"BJPLA030000365","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "归属于非控制性权益终止经营其他综合收益" = @XREF(CP,"BJPLA030000366","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		  
+			  /************************/
+		      /* A04 Cash Flow Master */
+		      /************************/
+			  "销售商品、提供劳务收到的现金" = @XREF(CP,"BJCFA040000030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "存放同业款项净减少额" = @XREF(CP,"BJCFA040000040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "吸收存款净增加额" = @XREF(CP,"BJCFA040000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "向中央银行借款净增加额" = @XREF(CP,"BJCFA040000060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "同业存放款项净增加额" = @XREF(CP,"BJCFA040000070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "收取利息、手续费和佣金的现金" = @XREF(CP,"BJCFA040000080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "拆入资金净增加额" = @XREF(CP,"BJCFA040000090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "卖出回购金融资产款净增加额" = @XREF(CP,"BJCFA040000100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "买入返售金融资产净减少额" = @XREF(CP,"BJCFA040000110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "金融资产投资净减少额" = @XREF(CP,"BJCFA040000120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "以公允价值计量且变动计入当期损益的金融负债净增加额" = @XREF(CP,"BJCFA040000130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "拆出资金净减少额" = @XREF(CP,"BJCFA040000140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "收到的税费返还" = @XREF(CP,"BJCFA040000150","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "收到的其他与经营活动有关的现金" = @XREF(CP,"BJCFA040000160","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		      "购买商品、提供劳务支付的现金" = @XREF(CP,"BJCFA040000180","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "发放贷款及垫款净增加额" = @XREF(CP,"BJCFA040000190","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "存放中央银行款项净增加额" = @XREF(CP,"BJCFA040000200","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "卖出回购金融资产款净减少额" = @XREF(CP,"BJCFA040000210","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "买入返售金融资产净增加额" = @XREF(CP,"BJCFA040000220","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      
+			  /* "应收款项类投资净增加额" = @XREF(CP,"BJCFA040000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+		      "存放同业款项净增加额" = @XREF(CP,"BJCFA040000240","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "同业存放款项净减少额" = @XREF(CP,"BJCFA040000250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "拆入资金净减少额" = @XREF(CP,"BJCFA040000260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "拆出资金净增加额" = @XREF(CP,"BJCFA040000270","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "金融资产投资净增加额" = @XREF(CP,"BJCFA040000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "以公允价值计量且变动计入当期损益的金融负债净减少额" = @XREF(CP,"BJCFA040000290","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");	 
+		      "支付利息、手续费和佣金的现金" = @XREF(CP,"BJCFA040000300","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "支付给职工以及为职工支付的现金" = @XREF(CP,"BJCFA040000310","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "支付的各项税费" = @XREF(CP,"BJCFA040000320","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:支付所得税" = @XREF(CP,"BJCFA040000330","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "支付的其他与经营活动有关的现金" = @XREF(CP,"BJCFA040000340","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+		      "收回投资收到的现金" = @XREF(CP,"BJCFA040000370","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "取得投资收益收到的现金" = @XREF(CP,"BJCFA040000380","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "处置固定资产、无形资产和其他长期资产收到的现金净额" = @XREF(CP,"BJCFA040000390","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");	 
+		      "处置子公司收到的现金净额" = @XREF(CP,"BJCFA040000400","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "处置联营公司收到的现金净额" = @XREF(CP,"BJCFA040000410","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "处置合营公司收到的现金净额" = @XREF(CP,"BJCFA040000420","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+		      /* "投资收到的利息" = @XREF(CP,"BJCFA040000430","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+		      "收到的其他与投资活动有关的现金" = @XREF(CP,"BJCFA040000440","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		      "购建固定资产、无形资产和其他长期资产所支付的现金" = @XREF(CP,"BJCFA040000460","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "投资支付的现金" = @XREF(CP,"BJCFA040000470","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "取得子公司支付的现金净额" = @XREF(CP,"BJCFA040000480","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "取得联营公司支付的现金净额" = @XREF(CP,"BJCFA040000490","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "取得合营公司支付的现金净额" = @XREF(CP,"BJCFA040000500","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "购买非控制性权益支付的现金" = @XREF(CP,"BJCFA040000510","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "支付其他与投资活动有关的现金" = @XREF(CP,"BJCFA040000520","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		      "吸收投资收到的现金" = @XREF(CP,"BJCFA040000550","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:子公司吸收少数股东投资收到的现金" = @XREF(CP,"BJCFA040000560","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "取得借款收到的现金" = @XREF(CP,"BJCFA040000570","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "发行债券收到的现金" = @XREF(CP,"BJCFA040000580","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "发行其他权益工具收到的现金" = @XREF(CP,"BJCFA040000590","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "收到的其他与筹资活动有关的现金" = @XREF(CP,"BJCFA040000600","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+         
+		      "偿还债务支付的现金(不含利息)" = @XREF(CP,"BJCFA040000620","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "偿付利息支付的现金" = @XREF(CP,"BJCFA040000630","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "分配股利、利润支付的现金" = @XREF(CP,"BJCFA040000640","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:子公司支付少数股东的股利、利润" = @XREF(CP,"BJCFA040000650","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "其中:向永久资本证券持有者及非控股股东分配股利" = @XREF(CP,"BJCFA040000660","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      "支付的其他与筹资活动有关的现金" = @XREF(CP,"BJCFA040000670","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+		      "汇率变动对现金及现金等价物的影响额" = @XREF(CP,"BJCFA040000680","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /* Add Account 20160916 */
+			  
+			  "存放中央银行款项净减少额"           = @XREF(CP,"BJCFA040000042","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "发放贷款及垫款净减少额"             = @XREF(CP,"BJCFA040000044","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "收到的与自然灾害损失有关的现金"     = @XREF(CP,"BJCFA040000162","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "收到的与保险索赔有关的现金"         = @XREF(CP,"BJCFA040000164","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "支付的与保险索赔有关的现金"         = @XREF(CP,"BJCFA040000342","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+			  "吸收存款净减少额"                   = @XREF(CP,"BJCFA040000202","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "向中央银行借款净减少额"             = @XREF(CP,"BJCFA040000204","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  "其中:联营、合营企业股利或利润"      = @XREF(CP,"BJCFA040000382","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+              "投资活动-收到的与自然灾害损失有关的现金" = @XREF(CP,"BJCFA040000442","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "投资活动-收到的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000444","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "发放的委托贷款"                      = @XREF(CP,"BJCFA040000472","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "投资活动-支付的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000522","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+			  "筹资活动-收到的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000602","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "筹资活动-收到的与自然灾害损失有关的现金" = @XREF(CP,"BJCFA040000604","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  "筹资活动-支付的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000672","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+			  /* 20190326 */
+			  "偿还租赁负债本金和利息所支付的现金" = @XREF(CP,"BJCFA040000625","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); 			  
+
+			 /* 20201022A
+			  "内部股利分配" = @XREF(CP,"BJCFA040000660","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); 20201022A */
+			
+		 /* BUGFIX00001 4-SEP-2015 */
+			  /* BUGFIX00001 2015-09-18a */
+			  /* "期初现金及现金等价物余额" = @XREF(CP,"BJCFA040000700","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+			  /* BUGFIX00041 2015-11-18a */	 
+              /**************************/
+		      /* A01 Finance KPI Master */
+		      /**************************/
+			  
+		      "现金分红-中信集团" = @XREF(CP,"BJPLA030000430","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); 
+		      "现金分红-其他"     = @XREF(CP,"BJPLA030000460","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); 
+
+			  /* Add Account 20160916 */
+			  "非经常性损益(扣除所得税影响)" = @XREF(CP,"BJPLA030000367","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /* change 20180814 */
+			  "其中:其他科目核算的有息负债"  = @XREF(CP,"BJPLA030000490","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /* Add 20170814a */
+		      "资本化利息支出" = @XREF(CP,"BJPLA030000500","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		  
+			  /******************/
+		      /* B0102 PNL Cost */
+		      /******************/
+              "其中:折旧及摊销" = @XREF(CP,"BJPLB010200060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /***********************/
+		      /* B0201 Admin Expense */
+		      /***********************/
+			  "管理费用-折旧及摊销" = @XREF(CP,"BJPLB020100030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020100040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /***********************/
+		      /* B0202 Selling Expense */
+		      /***********************/
+			  "销售费用-折旧及摊销" = @XREF(CP,"BJPLB020200030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020200040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /***********************/
+		      /* B0203 Finance Expense */
+		      /***********************/
+              "财务费用-利息支出" = @XREF(CP,"BJPLB020300030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "财务费用-其中:应付债券利息" = @XREF(CP,"BJPLB020300040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "财务费用-利息收入" = @XREF(CP,"BJPLB020300050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "财务费用-汇兑损失" = @XREF(CP,"BJPLB020300060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "财务费用-其他" = @XREF(CP,"BJPLB020300070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  /* change 20170814 */
+			  "财务费用-其中:对应资本性支出的利息支出" = @XREF(CP,"BJPLB020300041","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+	          /******************************/
+              /* B0204 Development Expenses */
+              /******************************/
+              /* 20180911a */
+              "研发费用-直接投入费用" = @XREF(CP,"BJPLB020400030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "研发费用-折旧及摊销" = @XREF(CP,"BJPLB020400040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "委托研发费用" = @XREF(CP,"BJPLB020400050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "新产品设计费" = @XREF(CP,"BJPLB020400060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其他研发费用" = @XREF(CP,"BJPLB020400070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+
+			  /* 20190326 */
+			"新产品设计费" = @XREF(CP,"BJPLB020400060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		 
+			  /*********************/
+		      /* B0402 Salary Cost */
+		      /*********************/
+			  /* Change add all months - 20161216a */
+			  "员工人数" = @XREF(CP,"BJPLB040200010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","Periodic","Master");
+              "销售费用-人工成本" = @XREF(CP,"BJPLB040200110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "管理费用-人工成本" = @XREF(CP,"BJPLB040200100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  "研发费用-人工成本"        = @XREF(CP,"BJPLB040200115","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              /* "计入其他项目中的人工成本" = @XREF(CP,"BJPLB040200120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+
+			 "人工成本-职工工资,奖金,津贴和补贴" = @XREF(CP,"BJPLB040200030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); 
+             "人工成本-工资"                      = @XREF(CP,"BJPLB040200031","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-奖金"                      = @XREF(CP,"BJPLB040200032","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-货币化津贴、补贴"          = @XREF(CP,"BJPLB040200033","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-其他薪酬"                  = @XREF(CP,"BJPLB040200034","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-职工福利费"                = @XREF(CP,"BJPLB040200040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             /* "人工成本-保险费用(企业缴费部分)"    = @XREF(CP,"BJPLB040200050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+             "人工成本-医疗保险"                  = @XREF(CP,"BJPLB040200051","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-养老保险"                  = @XREF(CP,"BJPLB040200052","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-失业保险"                  = @XREF(CP,"BJPLB040200053","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-工伤保险"                  = @XREF(CP,"BJPLB040200054","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-生育保险"                  = @XREF(CP,"BJPLB040200055","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-补充医疗保险"              = @XREF(CP,"BJPLB040200056","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-企业年金"                  = @XREF(CP,"BJPLB040200057","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-其他保险费用"              = @XREF(CP,"BJPLB040200058","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-住房公积金(企业缴费部分)"  = @XREF(CP,"BJPLB040200060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-工会经费"                  = @XREF(CP,"BJPLB040200070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-职工教育经费"              = @XREF(CP,"BJPLB040200080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+             "人工成本-其他"                      = @XREF(CP,"BJPLB040200090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /********************/
+			  /* B0406 Investment */
+			  /********************/
+			  
+			  /* BUGFIX00006 2015-09-11 */
+			  /* "其中:对联营企业的投资收益" = @XREF(CP,"BJPLB040600030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              /* "其中:对合营企业的投资收益" = @XREF(CP,"BJPLB040600040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+			   "对联营企业投资的投资收益" = @XREF(CP,"BJPLB040600030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   "对合营企业投资的投资收益" = @XREF(CP,"BJPLB040600040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   
+			   /* BUDFIX00014 - 20150-09-23 */
+			  "对其他企业的投资收益及处置收益" = @XREF(CP,"BJPLB040600050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+              /* "交易性金融资产投资收益" = @XREF(CP,"BJPLB040600060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              /* "可供出售金融资产-持有收益" = @XREF(CP,"BJPLB040600080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              /* "可供出售金融资产-处置收益" = @XREF(CP,"BJPLB040600090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+              /* "持有至到期投资投资收益" = @XREF(CP,"BJPLB040600100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			  
+              "套期工具投资收益" = @XREF(CP,"BJPLB040600110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "衍生金融工具投资收益" = @XREF(CP,"BJPLB040600120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其他投资收益" = @XREF(CP,"BJPLB040600130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  
+			  /* 20180911a */
+              "以公允价值计量且变动计入当期损益的金融资产投资收益" = @XREF(CP,"BJPLB040600121","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "以公允价值计量且变动计入其他综合收益的金融资产投资收益" = @XREF(CP,"BJPLB040600122","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "以摊余成本计量的金融资产投资收益" = @XREF(CP,"BJPLB040600123","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   
+			  /**************************/
+			  /* E01 KPI Forecast 2 yrs */
+			  /**************************/
+			  /* Not applicable here */
+			  /************************/
+		      /* B0301 - PL Structure */
+			  /************************/
+			 /* BUGFIX00005 2015-09-10 */
+             /* "其他投资收入" = @XREF(CP,"BJPLB030100170","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+             /* "其他投资成本" = @XREF(CP,"BJPLB030100340","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */			 
+			 
+			 /* BUGFIX00007 2015-09-15 For Mining */
+             /* "其他业务收入" = @XREF(CP,"BJPLB030100520","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+		     /* "其他业务成本" = @XREF(CP,"BJPLB030100530","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			 /* "归属于母公司股东的净利润构成-中信泰富其他" = @XREF(CP,"BJPLB030100790","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master"); */
+			 
+  	         SET CREATENONMISSINGBLK OFF;
+	     ENDFIX /* End No Product */
+		 
+		 /* BUGFIX00007 2015-09-15 For Mining */
+		 /*
+		 FIX ("中信矿业其他主营业务")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLA030000020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLA030000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX
+		 */
+		 
+		 /* add 20180816a */
+		 FIX ("中信矿业其他主营业务")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLB010100050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLB030100340","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX
+		 FIX ("精矿粉")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLB010100020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLB010200020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX
+		 
+	   ENDFIX /* End No Project */
+	  ENDFIX /* End No Misc */
+	 
+    /********************************/
+    /* A11 Region Revenue Asset KPI */
+    /********************************/
+    FIX("不分项目") /* No Project 2 Start */
+       FIX("不分产品") /* No Product 2 Start */
+	   
+           FIX("地区分部-中国大陆") /* Misc 2 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+		       "地区分部-资产合计" = @XREF(CP,"BJKPA110000080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+		   ENDFIX /* End Misc 2 */
+			   
+	       FIX("地区分部-港澳地区") /* Misc 3 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 3 */
+			   
+	       FIX("地区分部-境内抵销") /* Misc 4 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 4 */
+			   
+	       FIX("地区分部-境外") /* Misc 5 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 5 */
+		   
+	       FIX("地区分部-境内外抵销") /* Misc 6 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 6 */
+		   
+	   ENDFIX /* End No Product 2 */
+    ENDFIX /* End No Project 2 */
+	/******************************************/
+	/* B0307-03 Mining Sales  - Add 20161216a */
+	/******************************************/
+	FIX("不分项目")  /* Start Project */
+	   FIX("精矿粉")   /* Start Product 02 */
+	      FIX("不分客户")        /* Start No Customer */
+		      SET CREATENONMISSINGBLK ON;
+		      "生产量"                          = @XREF(CP,"BJPLB030300020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+			  "精矿粉含铁量"                    = @XREF(CP,"BJPLB030300030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "销售收入"                        = @XREF(CP,"BJPLB030300040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "销售量"			                = @XREF(CP,"BJPLB030300050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-原材料、燃料及动力成本"     = @XREF(CP,"BJPLB030300080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-人工成本"                   = @XREF(CP,"BJPLB030300090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-固定资产折旧"               = @XREF(CP,"BJPLB030300100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-无形资产及长期待摊费用摊销" = @XREF(CP,"BJPLB030300110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其中:矿产权摊销"                 = @XREF(CP,"BJPLB030300120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-维修费"                     = @XREF(CP,"BJPLB030300130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其他铁矿成本"                    = @XREF(CP,"BJPLB030300140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		  
+	          SET CREATENONMISSINGBLK OFF;
+		  ENDFIX                 /* End No Customer */
+  	      FIX("其中:外部客户")   /* Start Customer 02 */
+		      SET CREATENONMISSINGBLK ON;
+			  "销售收入"                        = @XREF(CP,"BJPLB030300160","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "销售量"                          = @XREF(CP,"BJPLB030300170","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-原材料、燃料及动力成本"     = @XREF(CP,"BJPLB030300200","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-人工成本"                   = @XREF(CP,"BJPLB030300210","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-固定资产折旧"               = @XREF(CP,"BJPLB030300220","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-无形资产及长期待摊费用摊销" = @XREF(CP,"BJPLB030300230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其中:矿产权摊销"                 = @XREF(CP,"BJPLB030300240","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "铁矿-维修费"                     = @XREF(CP,"BJPLB030300250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其他铁矿成本"                    = @XREF(CP,"BJPLB030300260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		  
+		      SET CREATENONMISSINGBLK OFF;
+		  ENDFIX                 /* End Customer 02 */
+	   ENDFIX  /* End Product 02 */
+	ENDFIX /* End Project */
+  ENDFIX /* End No Element */
+
+ ENDFIX /* End Budget */
+ /************************************* Next Year Forecast Section ***************************************/
+ /************************************* Next 2 Year Forecast Section ***************************************/
+ ENDFIX /* End Relative YearTotal */
+ /******************** Budget Year Total Section Start *******************************************************/
+ /**************************************************/
+ /*  B0403 - Staff Exp - Use B0402 - Add 20161216a */
+ /**************************************************/
+ FIX("全年合计.")   /* YearTotal Start */
+    FIX("本年预算") /* Budget Start */
+	 FIX("不分类别") /* No Element Start */
+	  FIX("不分综合") /* No Misc Start */
+	    FIX("不分产品") /* No Product Start */		 
+		  FIX("项目01") /* No Project Start */
+		     SET CREATENONMISSINGBLK ON;
+			 /*
+			 "员工人数"                          = @XREF(CP,"BJPLB040200010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+			 */
+             "销售费用-人工成本"                 = @XREF(CP,"BJPLB040200110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "管理费用-人工成本"                 = @XREF(CP,"BJPLB040200100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+			 
+			 /* Add 20180906a */
+			 "研发费用-人工成本"                 = @XREF(CP,"BJPLB040200115","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             /* "计入其他项目中的人工成本"          = @XREF(CP,"BJPLB040200120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master"); */
+
+			 /*
+			 "人工成本-职工工资,奖金,津贴和补贴" = @XREF(CP,"BJPLB040200030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-工资"                      = @XREF(CP,"BJPLB040200031","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-奖金"                      = @XREF(CP,"BJPLB040200032","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-货币化津贴、补贴"          = @XREF(CP,"BJPLB040200033","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-其他薪酬"                  = @XREF(CP,"BJPLB040200034","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-职工福利费"                = @XREF(CP,"BJPLB040200040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-医疗保险"                  = @XREF(CP,"BJPLB040200051","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-养老保险"                  = @XREF(CP,"BJPLB040200052","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-失业保险"                  = @XREF(CP,"BJPLB040200053","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-工伤保险"                  = @XREF(CP,"BJPLB040200054","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-生育保险"                  = @XREF(CP,"BJPLB040200055","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-补充医疗保险"              = @XREF(CP,"BJPLB040200056","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-企业年金"                  = @XREF(CP,"BJPLB040200057","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-其他保险费用"              = @XREF(CP,"BJPLB040200058","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-住房公积金(企业缴费部分)"  = @XREF(CP,"BJPLB040200060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-工会经费"                  = @XREF(CP,"BJPLB040200070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-职工教育经费"              = @XREF(CP,"BJPLB040200080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+             "人工成本-其他"                      = @XREF(CP,"BJPLB040200090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Dec","YTD","Master");
+			 */
+			 
+			 SET CREATENONMISSINGBLK OFF;
+		  ENDFIX /* End No Project */
+		ENDFIX   /* End No Product */
+	  ENDFIX     /* End No Misc */
+	 ENDFIX      /* End No Element */
+	ENDFIX       /* End Budget */
+	FIX("上年预计") /* Last Year Forecast Start */
+	 FIX("不分类别") /* No Element Start */
+	  FIX("不分综合") /* No Misc Start */
+	    FIX("不分产品") /* No Product Start */		 
+		  FIX("项目01") /* No Project Start */
+		     SET CREATENONMISSINGBLK ON;
+			 /*
+			 "员工人数"                          = @XREF(CP,"BJPLB040200010","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+			 */
+             "销售费用-人工成本"                 = @XREF(CP,"BJPLB040200110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "管理费用-人工成本"                 = @XREF(CP,"BJPLB040200100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+			 
+			 /* Add 20180906a */
+             "研发费用-人工成本"                 = @XREF(CP,"BJPLB040200115","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             /* "计入其他项目中的人工成本"          = @XREF(CP,"BJPLB040200120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master"); */
+
+			 /*
+			 "人工成本-职工工资,奖金,津贴和补贴" = @XREF(CP,"BJPLB040200030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-工资"                      = @XREF(CP,"BJPLB040200031","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-奖金"                      = @XREF(CP,"BJPLB040200032","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-货币化津贴、补贴"          = @XREF(CP,"BJPLB040200033","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他薪酬"                  = @XREF(CP,"BJPLB040200034","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-职工福利费"                = @XREF(CP,"BJPLB040200040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-医疗保险"                  = @XREF(CP,"BJPLB040200051","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-养老保险"                  = @XREF(CP,"BJPLB040200052","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-失业保险"                  = @XREF(CP,"BJPLB040200053","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-工伤保险"                  = @XREF(CP,"BJPLB040200054","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-生育保险"                  = @XREF(CP,"BJPLB040200055","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-补充医疗保险"              = @XREF(CP,"BJPLB040200056","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-企业年金"                  = @XREF(CP,"BJPLB040200057","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他保险费用"              = @XREF(CP,"BJPLB040200058","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-住房公积金(企业缴费部分)"  = @XREF(CP,"BJPLB040200060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-工会经费"                  = @XREF(CP,"BJPLB040200070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-职工教育经费"              = @XREF(CP,"BJPLB040200080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他"                      = @XREF(CP,"BJPLB040200090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+			 */
+			 
+			 SET CREATENONMISSINGBLK OFF;
+		  ENDFIX /* End No Project */
+		ENDFIX   /* End No Product */
+	  ENDFIX     /* End No Misc */
+	 ENDFIX      /* End No Element */
+	ENDFIX       /* End Forecast */
+ ENDFIX          /* End Year Total */
+ /******************** Budget Year Total Section End *******************************************************/
+ /************************************* Last Year Forecast Section *************************************/
+ FIX("Dec","BegBalance") /* Start Dec */
+   FIX("上年预计") /* Last Year Forecast Start */
+    FIX("不分类别") /* No Element Start */
+	  FIX("不分综合") /* No Misc */
+	    FIX("不分项目") /* No Project Start */
+		  FIX("不分产品") /* No Product Start */
+		     SET CREATENONMISSINGBLK ON;
+	         /****************************/
+		     /* A02 Balance Sheet Master */
+		     /****************************/
+		     "货币资金" = @XREF(CP,"BJBSA020000030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "存放中央银行款项" = @XREF(CP,"BJBSA020000040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "存放同业款项" = @XREF(CP,"BJBSA020000050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "拆出资金" = @XREF(CP,"BJBSA020000060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "短期金融投资-以公允价值计量且其变动计入当期损益" = @XREF(CP,"BJBSA020000070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* 20180911a */
+             "短期金融投资-以公允价值计量且变动计入其他综合收益的权益投资" = @XREF(CP,"BJBSA020000071","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "短期金融投资-以摊余成本计量的债权投资" = @XREF(CP,"BJBSA020000072","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+		     "短期衍生金融资产" = @XREF(CP,"BJBSA020000080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "买入返售金融资产" = @XREF(CP,"BJBSA020000090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "发放短期贷款及垫款" = @XREF(CP,"BJBSA020000100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应收票据" = @XREF(CP,"BJBSA020000110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应收股利(利润)" = @XREF(CP,"BJBSA020000120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 /* change 20190909a */
+		     /* "应收利息" = @XREF(CP,"BJBSA020000130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		     "应收账款" = @XREF(CP,"BJBSA020000140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "预付款项" = @XREF(CP,"BJBSA020000150","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其他应收款" = @XREF(CP,"BJBSA020000160","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "存货" = @XREF(CP,"BJBSA020000170","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:建造合同已完工未结算款项" = @XREF(CP,"BJBSA020000180","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 			 
+			 /* 20180911a */
+             "合同资产" = @XREF(CP,"BJBSA020000185","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+		     "一年内到期的非流动资产" = @XREF(CP,"BJBSA020000190","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其他流动资产" = @XREF(CP,"BJBSA020000200","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "持有待售资产" = @XREF(CP,"BJBSA020000210","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		     "发放长期贷款及垫款" = @XREF(CP,"BJBSA020000230","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* 20180911a */
+             "长期金融投资-以公允价值计量且其变动计入当期损益" = @XREF(CP,"BJBSA020000235","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+		     /* "长期金融资产投资-以公允价值计量且其变动计入其他综合收益" = @XREF(CP,"BJBSA020000240","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			 "长期金融投资-以公允价值计量且变动计入其他综合收益的权益投资" = @XREF(CP,"BJBSA020000240","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期金融投资-以摊余成本计量的债权投资" = @XREF(CP,"BJBSA020000250","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     /* "应收款项类投资" = @XREF(CP,"BJBSA020000260","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			 
+		     "长期应收款" = @XREF(CP,"BJBSA020000270","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期股权投资" = @XREF(CP,"BJBSA020000280","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:对联营企业的投资" = @XREF(CP,"BJBSA020000290","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:对合营企业的投资" = @XREF(CP,"BJBSA020000300","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "投资性房地产" = @XREF(CP,"BJBSA020000310","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "固定资产" = @XREF(CP,"BJBSA020000320","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "在建工程" = @XREF(CP,"BJBSA020000330","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "无形资产" = @XREF(CP,"BJBSA020000340","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:土地使用权" = @XREF(CP,"BJBSA020000350","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "商誉" = @XREF(CP,"BJBSA020000360","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期待摊费用" = @XREF(CP,"BJBSA020000370","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "递延所得税资产" = @XREF(CP,"BJBSA020000380","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期衍生金融资产" = @XREF(CP,"BJBSA020000390","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其他非流动资产" = @XREF(CP,"BJBSA020000400","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		     "吸收短期存款" = @XREF(CP,"BJBSA020000440","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "向中央银行借款" = @XREF(CP,"BJBSA020000450","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "同业及其他金融机构存放款项" = @XREF(CP,"BJBSA020000460","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "拆入资金" = @XREF(CP,"BJBSA020000470","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "以公允价值计量且变动计入当期损益的金融负债" = @XREF(CP,"BJBSA020000480","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "短期衍生金融负债" = @XREF(CP,"BJBSA020000490","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "卖出回购金融资产款" = @XREF(CP,"BJBSA020000500","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应付票据" = @XREF(CP,"BJBSA020000510","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应付股利(利润)" = @XREF(CP,"BJBSA020000520","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 /* change 20190909a */
+		     /* "应付利息" = @XREF(CP,"BJBSA020000530","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		     "应付账款" = @XREF(CP,"BJBSA020000540","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "预收款项" = @XREF(CP,"BJBSA020000550","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:建造合同已结算未完工款项" = @XREF(CP,"BJBSA020000560","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* 20180911a */
+             "合同负债" = @XREF(CP,"BJBSA020000565","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "优先股" = @XREF(CP,"BJBSA020000805","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+		     "其他应付款" = @XREF(CP,"BJBSA020000570","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应付职工薪酬" = @XREF(CP,"BJBSA020000580","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应交税费" = @XREF(CP,"BJBSA020000590","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其中:应交所得税" = @XREF(CP,"BJBSA020000600","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "其中:应交土地增值税" = @XREF(CP,"BJBSA020000610","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "短期借款" = @XREF(CP,"BJBSA020000620","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应付短期债券" = @XREF(CP,"BJBSA020000630","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "一年内到期的长期借款" = @XREF(CP,"BJBSA020000640","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "一年内到期的应付长期债券" = @XREF(CP,"BJBSA020000650","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");		 
+		     "一年内到期的其他非流动负债" = @XREF(CP,"BJBSA020000660","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "其他流动负债" = @XREF(CP,"BJBSA020000670","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "持有待售负债" = @XREF(CP,"BJBSA020000680","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+             "吸收长期存款" = @XREF(CP,"BJBSA020000700","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期借款" = @XREF(CP,"BJBSA020000710","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "应付长期债券" = @XREF(CP,"BJBSA020000720","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期应付款" = @XREF(CP,"BJBSA020000730","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "预计负债" = @XREF(CP,"BJBSA020000740","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "递延所得税负债" = @XREF(CP,"BJBSA020000750","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "长期衍生金融负债" = @XREF(CP,"BJBSA020000760","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+             "其他非流动负债" = @XREF(CP,"BJBSA020000770","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		     "实收资本(或股本)" = @XREF(CP,"BJBSA020000800","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "永久资本证券" = @XREF(CP,"BJBSA020000810","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "资本公积" = @XREF(CP,"BJBSA020000820","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* BUGFIX00001 4-SEP-2015 */
+             "其他综合收益." = @XREF(CP,"BJBSA020000830","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+		     "盈余公积" = @XREF(CP,"BJBSA020000840","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "一般风险准备" = @XREF(CP,"BJBSA020000850","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		     "未分配利润" = @XREF(CP,"BJBSA020000860","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* BUGFIX00001 4-SEP-2015 */
+             /* "其他综合收益." = @XREF(CP,"BJBSA020000870","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		 
+             "少数股东权益" = @XREF(CP,"BJBSA020000890","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* Add Account 20160916 */
+             "减：库存股"   = @XREF(CP,"BJBSA020000822","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			 
+			 /* "其中:有息负债" = @XREF(CP,"BJPLA030000510","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+ 			 
+			/* 20190326 */
+			"租赁使用权资产" = @XREF(CP,"BJBSA020000325","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");		 
+			"短期租赁负债" = @XREF(CP,"BJBSA020000545","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");		 
+			"长期租赁负债" = @XREF(CP,"BJBSA020000735","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");		 
+
+             /******************/
+		     /* A03 PNL Master */
+		     /******************/
+			 /* change 20170814 */
+              /* "营业税金及附加" = @XREF(CP,"BJPLA030000060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  "税金及附加" = @XREF(CP,"BJPLA030000060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      
+			  "其中:土地增值税" = @XREF(CP,"BJPLA030000070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "资产减值损失" = @XREF(CP,"BJPLA030000110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:发放贷款和垫款资产减值损失" = @XREF(CP,"BJPLA030000120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* 20180911a */
+              "研发费用" = @XREF(CP,"BJPLA030000095","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "信用减值损失" = @XREF(CP,"BJPLA030000115","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "净敞口套期收益" = @XREF(CP,"BJPLA030000171","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "资产处置收益" = @XREF(CP,"BJPLA030000172","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /* change 20190909a */
+              /* "金融资产投资(以公允价值计量且其变动计入其他综合收益)信用减值准备" = @XREF(CP,"BJPLA030000325","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+		      "公允价值变动收益" = @XREF(CP,"BJPLA030000130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:投资性房地产重估收益" = @XREF(CP,"BJPLA030000140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "营业外收入" = @XREF(CP,"BJPLA030000190","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "营业外支出" = @XREF(CP,"BJPLA030000200","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+		      /* "其中:非流动资产处置损失" = @XREF(CP,"BJPLA030000210","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+		      "所得税费用" = @XREF(CP,"BJPLA030000230","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /* change 20190909a */
+		      /* "永久资本证券持有人的净利润" = @XREF(CP,"BJPLA030000260","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  "归属于母公司所有者持续经营净利润" = @XREF(CP,"BJPLA030000250","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "归属于非控制性权益持续经营净利润" = @XREF(CP,"BJPLA030000270","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "基本每股收益(元)" = @XREF(CP,"BJPLA030000290","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "稀释每股收益(元)" = @XREF(CP,"BJPLA030000300","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      /* change 20190909a */
+			  /* "金融资产投资(以公允价值计量且其变动计入其他综合收益)公允价值变动" = @XREF(CP,"BJPLA030000320","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  /* change 20190090a */
+		      /* "现金流量套期:套期储备变动" = @XREF(CP,"BJPLA030000330","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  /* change 20190909a */
+		      /* "所占联营及合营企业的其他综合收益" = @XREF(CP,"BJPLA030000340","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		      /* "其他综合收益-外币报表折算差额" = @XREF(CP,"BJPLA030000350","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              /* "本年其他综合收益(税后净额)" = @XREF(CP,"BJPLA030000360","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		      /* "永久资本证券持有人的综合收益总额" = @XREF(CP,"BJPLA030000390","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              "归属于少数股东的综合收益总额" = @XREF(CP,"BJPLA030000400","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");        
+              "非经常性损益(扣除所得税影响)" = @XREF(CP,"BJPLA030000367","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* Add Account Map 20160916 */
+			  /* "其中:非流动资产处置利得"            = @XREF(CP,"BJPLA030000192","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  "归属于母公司所有者持续经营其他综合收益" = @XREF(CP,"BJPLA030000362","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "归属于非控制性权益持续经营其他综合收益"   = @XREF(CP,"BJPLA030000364","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* Add 20170814a */
+			  "其他收益" = @XREF(CP,"BJPLA030000175","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");			  
+
+              /* Add 20180816a */			  
+              "综合收益总额"                   = @XREF(CP,"BJPLA030000370","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "归属于母公司股东的综合收益总额" = @XREF(CP,"BJPLA030000380","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /* "永久资本证券持有人的综合收益总额" = @XREF(CP,"BJPLA030000390","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              "归属于少数股东的综合收益总额" = @XREF(CP,"BJPLA030000400","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+              /* add 20190909 */
+              "归属于母公司所有者终止经营净利润" = @XREF(CP,"BJPLA030000271","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "归属于非控制性权益终止经营净利润" = @XREF(CP,"BJPLA030000272","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "归属于母公司所有者终止经营其他综合收益" = @XREF(CP,"BJPLA030000365","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "归属于非控制性权益终止经营其他综合收益" = @XREF(CP,"BJPLA030000366","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /************************/
+		      /* A04 Cash Flow Master */
+		      /************************/
+			  "销售商品、提供劳务收到的现金" = @XREF(CP,"BJCFA040000030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "存放同业款项净减少额" = @XREF(CP,"BJCFA040000040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "吸收存款净增加额" = @XREF(CP,"BJCFA040000050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "向中央银行借款净增加额" = @XREF(CP,"BJCFA040000060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "同业存放款项净增加额" = @XREF(CP,"BJCFA040000070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "收取利息、手续费和佣金的现金" = @XREF(CP,"BJCFA040000080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "拆入资金净增加额" = @XREF(CP,"BJCFA040000090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "卖出回购金融资产款净增加额" = @XREF(CP,"BJCFA040000100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "买入返售金融资产净减少额" = @XREF(CP,"BJCFA040000110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "金融资产投资净减少额" = @XREF(CP,"BJCFA040000120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "以公允价值计量且变动计入当期损益的金融负债净增加额" = @XREF(CP,"BJCFA040000130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "拆出资金净减少额" = @XREF(CP,"BJCFA040000140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "收到的税费返还" = @XREF(CP,"BJCFA040000150","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "收到的其他与经营活动有关的现金" = @XREF(CP,"BJCFA040000160","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		      "购买商品、提供劳务支付的现金" = @XREF(CP,"BJCFA040000180","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "发放贷款及垫款净增加额" = @XREF(CP,"BJCFA040000190","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "存放中央银行款项净增加额" = @XREF(CP,"BJCFA040000200","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "卖出回购金融资产款净减少额" = @XREF(CP,"BJCFA040000210","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "买入返售金融资产净增加额" = @XREF(CP,"BJCFA040000220","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+		      /* "应收款项类投资净增加额" = @XREF(CP,"BJCFA040000230","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+		      "存放同业款项净增加额" = @XREF(CP,"BJCFA040000240","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "同业存放款项净减少额" = @XREF(CP,"BJCFA040000250","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "拆入资金净减少额" = @XREF(CP,"BJCFA040000260","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "拆出资金净增加额" = @XREF(CP,"BJCFA040000270","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "金融资产投资净增加额" = @XREF(CP,"BJCFA040000230","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "以公允价值计量且变动计入当期损益的金融负债净减少额" = @XREF(CP,"BJCFA040000290","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");	 
+		      "支付利息、手续费和佣金的现金" = @XREF(CP,"BJCFA040000300","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "支付给职工以及为职工支付的现金" = @XREF(CP,"BJCFA040000310","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "支付的各项税费" = @XREF(CP,"BJCFA040000320","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:支付所得税" = @XREF(CP,"BJCFA040000330","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "支付的其他与经营活动有关的现金" = @XREF(CP,"BJCFA040000340","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+		      "收回投资收到的现金" = @XREF(CP,"BJCFA040000370","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "取得投资收益收到的现金" = @XREF(CP,"BJCFA040000380","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "处置固定资产、无形资产和其他长期资产收到的现金净额" = @XREF(CP,"BJCFA040000390","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");	 
+		      "处置子公司收到的现金净额" = @XREF(CP,"BJCFA040000400","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "处置联营公司收到的现金净额" = @XREF(CP,"BJCFA040000410","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "处置合营公司收到的现金净额" = @XREF(CP,"BJCFA040000420","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+		      /* "投资收到的利息" = @XREF(CP,"BJCFA040000430","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+		      "收到的其他与投资活动有关的现金" = @XREF(CP,"BJCFA040000440","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		      "购建固定资产、无形资产和其他长期资产所支付的现金" = @XREF(CP,"BJCFA040000460","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "投资支付的现金" = @XREF(CP,"BJCFA040000470","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "取得子公司支付的现金净额" = @XREF(CP,"BJCFA040000480","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "取得联营公司支付的现金净额" = @XREF(CP,"BJCFA040000490","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "取得合营公司支付的现金净额" = @XREF(CP,"BJCFA040000500","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "购买非控制性权益支付的现金" = @XREF(CP,"BJCFA040000510","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "支付其他与投资活动有关的现金" = @XREF(CP,"BJCFA040000520","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		      "吸收投资收到的现金" = @XREF(CP,"BJCFA040000550","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:子公司吸收少数股东投资收到的现金" = @XREF(CP,"BJCFA040000560","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "取得借款收到的现金" = @XREF(CP,"BJCFA040000570","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "发行债券收到的现金" = @XREF(CP,"BJCFA040000580","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "发行其他权益工具收到的现金" = @XREF(CP,"BJCFA040000590","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "收到的其他与筹资活动有关的现金" = @XREF(CP,"BJCFA040000600","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+         
+		      "偿还债务支付的现金(不含利息)" = @XREF(CP,"BJCFA040000620","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "偿付利息支付的现金" = @XREF(CP,"BJCFA040000630","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "分配股利、利润支付的现金" = @XREF(CP,"BJCFA040000640","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:子公司支付少数股东的股利、利润" = @XREF(CP,"BJCFA040000650","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "其中:向永久资本证券持有者及非控股股东分配股利" = @XREF(CP,"BJCFA040000660","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "支付的其他与筹资活动有关的现金" = @XREF(CP,"BJCFA040000670","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		 
+		      "汇率变动对现金及现金等价物的影响额" = @XREF(CP,"BJCFA040000680","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+			  /* Add Account 20160916 */
+			  "存放中央银行款项净减少额"           = @XREF(CP,"BJCFA040000042","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "发放贷款及垫款净减少额"             = @XREF(CP,"BJCFA040000044","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "收到的与自然灾害损失有关的现金"     = @XREF(CP,"BJCFA040000162","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "收到的与保险索赔有关的现金"         = @XREF(CP,"BJCFA040000164","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "支付的与保险索赔有关的现金"         = @XREF(CP,"BJCFA040000342","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+			  "吸收存款净减少额"                   = @XREF(CP,"BJCFA040000202","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "向中央银行借款净减少额"             = @XREF(CP,"BJCFA040000204","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  "其中:联营、合营企业股利或利润"      = @XREF(CP,"BJCFA040000382","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+              "投资活动-收到的与自然灾害损失有关的现金" = @XREF(CP,"BJCFA040000442","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "投资活动-收到的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000444","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "发放的委托贷款"                      = @XREF(CP,"BJCFA040000472","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "投资活动-支付的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000522","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+			  "筹资活动-收到的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000602","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "筹资活动-收到的与自然灾害损失有关的现金" = @XREF(CP,"BJCFA040000604","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  "筹资活动-支付的与保险索赔有关的现金" = @XREF(CP,"BJCFA040000672","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");			  	  		  
+
+			  /* 20190326 */
+			  "偿还租赁负债本金和利息所支付的现金" = @XREF(CP,"BJCFA040000625","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); 
+			
+			  /* 20201022A
+		 	  "内部股利分配" = @XREF(CP,"BJCFA040000660","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); 20201022A */
+			
+			  /* BUGFIX00001 4-SEP-2015 */
+			  /* BUGFIX00012 2015-09-18a */
+			  /* "期初现金及现金等价物余额" = @XREF(CP,"BJCFA040000700","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+              /* BUGFIX00041 2015-11-18a */
+              /**************************/
+		      /* A01 Finance KPI Master */
+		      /**************************/
+			  /* Change Account 20160916 */
+  	          "现金分红-中信集团"            = @XREF(CP,"BJPLA030000430","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");	 
+		      "现金分红-其他"                = @XREF(CP,"BJPLA030000460","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");	 
+			  
+			  /* Add Account 20160916 */
+			  "非经常性损益(扣除所得税影响)" = @XREF(CP,"BJPLA030000367","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /* change 20170814 */
+              "其中:其他科目核算的有息负债"  = @XREF(CP,"BJPLA030000490","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");  
+			  /* Add 20170814a */
+		      "资本化利息支出" = @XREF(CP,"BJPLA030000500","HQ_SINO","Seg_GEN","Dept_GEN","FCST","YTD","FY22","Dec","Master");
+			  
+			  /******************/
+		      /* B0102 PNL Cost */
+		      /******************/
+              "其中:折旧及摊销" = @XREF(CP,"BJPLB010200060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /***********************/
+		      /* B0201 Admin Expense */
+		      /***********************/
+			  "管理费用-折旧及摊销" = @XREF(CP,"BJPLB020100030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020100040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /***********************/
+		      /* B0202 Selling Expense */
+		      /***********************/
+			  "销售费用-折旧及摊销" = @XREF(CP,"BJPLB020200030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020200040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /***********************/
+		      /* B0203 Finance Expense */
+		      /***********************/
+              "财务费用-利息支出" = @XREF(CP,"BJPLB020300030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "财务费用-其中:应付债券利息" = @XREF(CP,"BJPLB020300040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "财务费用-利息收入" = @XREF(CP,"BJPLB020300050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "财务费用-汇兑损失" = @XREF(CP,"BJPLB020300060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "财务费用-其他" = @XREF(CP,"BJPLB020300070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  /* change 20170814 */
+			  "财务费用-其中:对应资本性支出的利息支出" = @XREF(CP,"BJPLB020300041","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /******************************/
+              /* B0204 Development Expenses */
+              /******************************/
+              /* 20180911a */
+              "研发费用-直接投入费用" = @XREF(CP,"BJPLB020400030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "研发费用-折旧及摊销" = @XREF(CP,"BJPLB020400040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "委托研发费用" = @XREF(CP,"BJPLB020400050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "新产品设计费" = @XREF(CP,"BJPLB020400060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "其他研发费用" = @XREF(CP,"BJPLB020400070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+
+			  /* 20190326 */
+			"新产品设计费" = @XREF(CP,"BJPLB020400060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			
+			  /*********************/
+		      /* B0402 Salary Cost */
+		      /*********************/
+			  "员工人数" = @XREF(CP,"BJPLB040200010","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "销售费用-人工成本" = @XREF(CP,"BJPLB040200110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      "管理费用-人工成本" = @XREF(CP,"BJPLB040200100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* Add 20180906a */
+              "研发费用-人工成本"        = @XREF(CP,"BJPLB040200115","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              /* "计入其他项目中的人工成本" = @XREF(CP,"BJPLB040200120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			 
+             "人工成本-职工工资,奖金,津贴和补贴" = @XREF(CP,"BJPLB040200030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");			 
+			 "人工成本-工资"                      = @XREF(CP,"BJPLB040200031","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-奖金"                      = @XREF(CP,"BJPLB040200032","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-货币化津贴、补贴"          = @XREF(CP,"BJPLB040200033","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他薪酬"                  = @XREF(CP,"BJPLB040200034","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-职工福利费"                = @XREF(CP,"BJPLB040200040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             /* "人工成本-保险费用(企业缴费部分)"    = @XREF(CP,"BJPLB040200050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master"); */
+             "人工成本-医疗保险"                  = @XREF(CP,"BJPLB040200051","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-养老保险"                  = @XREF(CP,"BJPLB040200052","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-失业保险"                  = @XREF(CP,"BJPLB040200053","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-工伤保险"                  = @XREF(CP,"BJPLB040200054","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-生育保险"                  = @XREF(CP,"BJPLB040200055","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-补充医疗保险"              = @XREF(CP,"BJPLB040200056","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-企业年金"                  = @XREF(CP,"BJPLB040200057","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他保险费用"              = @XREF(CP,"BJPLB040200058","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-住房公积金(企业缴费部分)"  = @XREF(CP,"BJPLB040200060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-工会经费"                  = @XREF(CP,"BJPLB040200070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-职工教育经费"              = @XREF(CP,"BJPLB040200080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+             "人工成本-其他"                      = @XREF(CP,"BJPLB040200090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","YTD","Master");
+ 
+			  /********************/
+			  /* B0406 Investment */
+			  /********************/
+			  
+			  /* BUGFIX00006 - 2015-09-11 */
+			  /* "其中:对联营企业的投资收益" = @XREF(CP,"BJPLB040600030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              /* "其中:对合营企业的投资收益" = @XREF(CP,"BJPLB040600040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  
+			  "对联营企业投资的投资收益" = @XREF(CP,"BJPLB040600030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "对合营企业投资的投资收益" = @XREF(CP,"BJPLB040600040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* BUDFIX00014 - 20150-09-23 */
+			  "对其他企业的投资收益及处置收益" = @XREF(CP,"BJPLB040600050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              
+			  /* "交易性金融资产投资收益" = @XREF(CP,"BJPLB040600060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              /* "可供出售金融资产-持有收益" = @XREF(CP,"BJPLB040600080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              /* "可供出售金融资产-处置收益" = @XREF(CP,"BJPLB040600090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              /* "持有至到期投资投资收益" = @XREF(CP,"BJPLB040600100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+              
+			  "套期工具投资收益" = @XREF(CP,"BJPLB040600110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "衍生金融工具投资收益" = @XREF(CP,"BJPLB040600120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "其他投资收益" = @XREF(CP,"BJPLB040600130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /* 20180911a */
+              "以公允价值计量且变动计入当期损益的金融资产投资收益" = @XREF(CP,"BJPLB040600121","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "以公允价值计量且变动计入其他综合收益的金融资产投资收益" = @XREF(CP,"BJPLB040600122","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "以摊余成本计量的金融资产投资收益" = @XREF(CP,"BJPLB040600123","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  
+			  /**************************/
+			  /* E01 KPI Forecast 2 yrs */
+			  /**************************/
+			  /* Not applicable here */
+			  /************************/
+		     /* B0301 - PL Structure */
+			 /************************/
+			 /* BUGFIX00005 2015-09-10 */
+			 /* "其他投资收入" = @XREF(CP,"BJPLB030100170","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+             /* "其他投资成本" = @XREF(CP,"BJPLB030100340","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */             
+			 /* BUGFIX00007 2015-09-15 For Mining */
+			 /* "其他业务收入" = @XREF(CP,"BJPLB030100520","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+		     /* "其他业务成本" = @XREF(CP,"BJPLB030100530","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */           
+			 /* "归属于母公司股东的净利润构成-中信泰富其他" = @XREF(CP,"BJPLB030100790","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master"); */
+			  SET CREATENONMISSINGBLK OFF;
+	     ENDFIX /* End No Product */
+		 
+		 /* BUGFIX00007 2015-09-15 For Mining */
+		 /*
+ 		 FIX ("中信矿业其他主营业务")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLA030000020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLA030000050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX
+		 */
+		 
+		 /* add 20180816a */
+		 FIX ("中信矿业其他主营业务")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLB010100050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLB030100340","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX
+		 FIX ("精矿粉")
+		      SET CREATENONMISSINGBLK ON;
+			  "中信矿业国际-主营业务收入"  = @XREF(CP,"BJPLB010100020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "中信矿业国际-主营业务成本"  = @XREF(CP,"BJPLB010200020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		      SET CREATENONMISSINGBLK OFF;
+	     ENDFIX 
+		 
+	   ENDFIX /* End No Project */
+	  ENDFIX /* End No Misc */
+   /********************************/
+   /* A11 Region Revenue Asset KPI */
+   /********************************/
+   FIX("不分项目") /* No Project 2 Start */
+       FIX("不分产品") /* No Product 2 Start */
+	   
+           FIX("地区分部-中国大陆") /* Misc 2 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000010","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+		       "地区分部-资产合计" = @XREF(CP,"BJKPA110000080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+		   ENDFIX /* End Misc 2 */
+			   
+	       FIX("地区分部-港澳地区") /* Misc 3 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 3 */
+			   
+	       FIX("地区分部-境内抵销") /* Misc 4 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 4 */
+			   
+	       FIX("地区分部-境外") /* Misc 5 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 5 */
+		   
+	       FIX("地区分部-境内外抵销") /* Misc 6 Start */
+		       SET CREATENONMISSINGBLK ON;
+	           "地区分部-营业收入" = @XREF(CP,"BJKPA110000060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+	           "地区分部-资产合计" = @XREF(CP,"BJKPA110000130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			   SET CREATENONMISSINGBLK OFF;
+	       ENDFIX /* End Misc 6 */
+		   
+	   ENDFIX /* End No Product 2 */
+   ENDFIX /* End No Project 2 */
+   /***************************/
+   /* B0307-03 Mining Sales   */
+   /***************************/
+	FIX("不分项目")  /* Start Project */
+	   FIX("精矿粉")   /* Start Product 02 */
+	      FIX("不分客户")        /* Start No Customer */
+		      SET CREATENONMISSINGBLK ON;
+		      "生产量"                          = @XREF(CP,"BJPLB030300020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "精矿粉含铁量"                    = @XREF(CP,"BJPLB030300030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+			  "销售收入"                        = @XREF(CP,"BJPLB030300040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "销售量"                          = @XREF(CP,"BJPLB030300050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-原材料、燃料及动力成本"     = @XREF(CP,"BJPLB030300080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-人工成本"                   = @XREF(CP,"BJPLB030300090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-固定资产折旧"               = @XREF(CP,"BJPLB030300100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-无形资产及长期待摊费用摊销" = @XREF(CP,"BJPLB030300110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "其中:矿产权摊销"                 = @XREF(CP,"BJPLB030300120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-维修费"                     = @XREF(CP,"BJPLB030300130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "其他铁矿成本"                    = @XREF(CP,"BJPLB030300140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");		  
+	          SET CREATENONMISSINGBLK OFF;
+		  ENDFIX                 /* End No Customer */
+  	      FIX("其中:外部客户")   /* Start Customer 02 */
+		      SET CREATENONMISSINGBLK ON;
+			  "销售收入"                        = @XREF(CP,"BJPLB030300160","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "销售量"                          = @XREF(CP,"BJPLB030300170","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-原材料、燃料及动力成本"     = @XREF(CP,"BJPLB030300200","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-人工成本"                   = @XREF(CP,"BJPLB030300210","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-固定资产折旧"               = @XREF(CP,"BJPLB030300220","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-无形资产及长期待摊费用摊销" = @XREF(CP,"BJPLB030300230","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "其中:矿产权摊销"                 = @XREF(CP,"BJPLB030300240","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Periodic","Master");
+              "铁矿-维修费"                     = @XREF(CP,"BJPLB030300250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+              "其他铁矿成本"                    = @XREF(CP,"BJPLB030300260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");		  
+		      SET CREATENONMISSINGBLK OFF;
+		  ENDFIX                 /* End Customer 02 */
+	   ENDFIX  /* End Product 02 */
+	ENDFIX /* End Project */   
+  ENDFIX /* End No Element */
+  
+  ENDFIX /* End Last Year Forecast */
+  ENDFIX /* End Dec */
+ /***************************** Last Year Forecast Cash Flow Beginning Balance Start Section **************************************************/
+ /* BUGFIX00012 - 2015-09-18a  */
+ /* Add Cash Flow Opening here */
+ FIX("Jan") /* Start Jan */
+  FIX("上年预计") /* Last Year Forceast Start */
+   FIX("不分类别") /* No Element Start */
+	FIX("不分综合") /* No Misc Start*/
+	  FIX("不分项目") /* No Project Start */
+        FIX("不分产品") /* No Product Start */
+		    SET CREATENONMISSINGBLK ON;
+		    "期初现金及现金等价物余额" = @XREF(CP,"BJCFA040000700","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","Periodic","Master");
+		    SET CREATENONMISSINGBLK OFF;
+		 ENDFIX /* End No Product */
+        ENDFIX /* End No Project */		 
+	  ENDFIX  /* End No Misc */
+	 ENDFIX /* End No Element */
+   ENDFIX  /* End Last Year Forecast Cash Flow */
+  ENDFIX /* End Jan */
+ /***************************** Last Year Forecast Cash Flow Beginning Balance End Section ****************************************************/
+ /***************************** Last Year Forecast Monthly Data Start Section **************************************************/
+ /* BUGFIX00051 - 20160916  */
+ /* 1. No of Staff */
+ FIX(@RELATIVE ("YearTotal",0)) /* Start Monthly */
+  FIX("上年预计") /* Last Year Forceast Start */
+   FIX("不分类别") /* No Element Start */
+	FIX("不分综合") /* No Misc Start*/
+	  FIX("不分项目") /* No Project Start */
+        FIX("不分产品") /* No Product Start */
+		    SET CREATENONMISSINGBLK ON;
+		    "员工人数" = @XREF(CP,"BJPLB040200010","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","Dec","Periodic","Master");
+		    SET CREATENONMISSINGBLK OFF;
+		ENDFIX /* End No Product */
+      ENDFIX /* End No Project */		 
+	ENDFIX  /* End No Misc */
+   ENDFIX /* End No Element */
+  ENDFIX  /* End Last Year Forecast */
+ ENDFIX /* End Monthly */ 
+ /***************************** Last Year Forecast Monthly Data End Section ****************************************************/
+ ENDFIX /* End Entity */
+ENDFIX  /* End Year */
+/*********** Start E1 Forecast Next Year and Next 2 Year **************************************************/
+FIX(&CurVersion,&CurYear,"HSP_InputValue","Local")
+  FIX("中信澳矿")
+   FIX("BegBalance")
+	 
+	  FIX("不分类别") /* No Element Start */
+	   FIX("不分综合") /* No Misc Start*/
+	    FIX("不分项目") /* No Project Start */
+         FIX("不分产品") /* No Product Start */
+		 
+		  FIX("明年预测") /* Forecast Next Year Start */ 
+			 SET CREATENONMISSINGBLK ON;
+             "营业总收入."                  = @XREF(CP,"BJKPE010000010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "利润总额."                    = @XREF(CP,"BJKPE010000020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "净利润."                      = @XREF(CP,"BJKPE010000080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "归属于母公司股东的净利润."    = @XREF(CP,"BJKPE010000030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "EBITDA."                      = @XREF(CP,"BJKPE010000110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "资产合计."                    = @XREF(CP,"BJKPE010000040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "负债合计."                    = @XREF(CP,"BJKPE010000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "其中:有息负债."               = @XREF(CP,"BJKPE010000090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","Dec","Periodic","Master");
+             "归属于母公司所有者权益合计."  = @XREF(CP,"BJKPE010000070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+             "资本性支出."                  = @XREF(CP,"BJKPE010000100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+			 "房地产开发支出."              = @XREF(CP,"BJKPE020000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY24","YearTotal","Periodic","Master");
+			 SET CREATENONMISSINGBLK OFF;
+		  ENDFIX       /* End Forecast */
+
+		  FIX("后年预测") /* Forecast Next 2 Year Start */ 
+			 SET CREATENONMISSINGBLK ON;
+             "营业总收入."                  = @XREF(CP,"BJKPE010000010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "利润总额."                    = @XREF(CP,"BJKPE010000020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "净利润."                      = @XREF(CP,"BJKPE010000080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "归属于母公司股东的净利润."    = @XREF(CP,"BJKPE010000030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "EBITDA."                      = @XREF(CP,"BJKPE010000110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "资产合计."                    = @XREF(CP,"BJKPE010000040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "负债合计."                    = @XREF(CP,"BJKPE010000050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "其中:有息负债."               = @XREF(CP,"BJKPE010000090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","Dec","Periodic","Master");
+             "归属于母公司所有者权益合计."  = @XREF(CP,"BJKPE010000070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+             "资本性支出."                  = @XREF(CP,"BJKPE010000100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+			 "房地产开发支出."              = @XREF(CP,"BJKPE020000230","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","FY25","YearTotal","Periodic","Master");
+			 SET CREATENONMISSINGBLK OFF;
+		  ENDFIX       /* End Forecast */
+
+		 ENDFIX  /* End No Project */
+		ENDFIX   /* End No Product */
+	  ENDFIX     /* End No Misc */
+	 ENDFIX      /* End No Element */
+
+   ENDFIX        /* End Begbalance */
+ ENDFIX          /* End Entity */
+ENDFIX           /* End Year */
+/*********** End E1 Forecast Next Year and Next 2 Year **************************************************/
+/************************** Add A01 A01 A101 A102 A0201 B0205 BJ IncreaseRevenue ReduceCost AdministrativeExpense ***********/
+FIX(&CurYear,"HSP_InputValue","Local")
+  FIX("中信澳矿")
+
+    FIX("不分产品") /* No Product Start */
+  	  FIX("不分项目") /* No Project Start */
+	  
+		FIX("不分类别") /* No Element Start */
+		
+		  FIX("本期实际") /* Actual in BJ */
+		    FIX("目标版") /* Target */
+			
+			  FIX("不分综合") /* No Misc Start */
+			    FIX(@RELATIVE("YearTotal",0))    
+				  SET CREATENONMISSINGBLK ON;
+				  /* A01 */
+                  "协同收入" = @XREF(CP,"BJPLB020600020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "新业务收入." = @XREF(CP,"BJPLB020600030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "政府补贴收入" = @XREF(CP,"BJPLB020600040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "资产处置收益." = @XREF(CP,"BJPLB020600050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他开源" = @XREF(CP,"BJPLB020600060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "成本管控优化" = @XREF(CP,"BJPLB020600080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用总额（不含人工成本、折旧及摊销）压降" = @XREF(CP,"BJPLB020600090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "负债端成本下降" = @XREF(CP,"BJPLB020600100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "应收账款、长期应收款清收" = @XREF(CP,"BJPLB020600110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "产成品存货压降金额" = @XREF(CP,"BJPLB020600120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "积极争取社保及税费减免" = @XREF(CP,"BJPLB020600130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他节流" = @XREF(CP,"BJPLB020600140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+				ENDFIX
+			    FIX("全年合计.")
+			      SET CREATENONMISSINGBLK ON;
+				  /* A01 */
+				  "协同收入" = @XREF(CP,"BJPLB020600020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "新业务收入." = @XREF(CP,"BJPLB020600030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "政府补贴收入" = @XREF(CP,"BJPLB020600040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "资产处置收益." = @XREF(CP,"BJPLB020600050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "其他开源" = @XREF(CP,"BJPLB020600060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "成本管控优化" = @XREF(CP,"BJPLB020600080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "管理费用总额（不含人工成本、折旧及摊销）压降" = @XREF(CP,"BJPLB020600090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "负债端成本下降" = @XREF(CP,"BJPLB020600100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "应收账款、长期应收款清收" = @XREF(CP,"BJPLB020600110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "产成品存货压降金额" = @XREF(CP,"BJPLB020600120","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "积极争取社保及税费减免" = @XREF(CP,"BJPLB020600130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "其他节流" = @XREF(CP,"BJPLB020600140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				  /* A0101 */
+				  "管理费用-人工成本" = @XREF(CP,"BJPLB020700010","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+                  "管理费用-折旧及摊销" = @XREF(CP,"BJPLB020700020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				  /* A0102 */
+                  "付息负债平均成本率" = @XREF(CP,"BJPLB020800020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+			      SET CREATENONMISSINGBLK OFF;
+				ENDFIX
+			  ENDFIX
+
+			  FIX("全年合计.")   
+               FIX("会议费")
+			     SET CREATENONMISSINGBLK ON;                
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("差旅费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("出国费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("业务招待费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("办公费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("业务宣传费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("车辆费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("租赁费")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX
+
+               FIX("其他费用")
+			     SET CREATENONMISSINGBLK ON;
+				 "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020700110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","YTD","Dec","Master");
+				 SET CREATENONMISSINGBLK OFF;
+               ENDFIX /* End Misc */
+		      ENDFIX /* End Period */
+
+			ENDFIX /* End Target */
+		  ENDFIX /* End Actual */
+		  
+		  FIX("上年预计")
+		    FIX(&CurVersion) /* Current Version */
+			
+			  FIX("不分综合")
+			    FIX("Dec")
+			      SET CREATENONMISSINGBLK ON;
+				  "协同收入" = @XREF(CP,"BJPLB020600020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "新业务收入." = @XREF(CP,"BJPLB020600030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "政府补贴收入" = @XREF(CP,"BJPLB020600040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "资产处置收益." = @XREF(CP,"BJPLB020600050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他开源" = @XREF(CP,"BJPLB020600060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "成本管控优化" = @XREF(CP,"BJPLB020600080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用总额（不含人工成本、折旧及摊销）压降" = @XREF(CP,"BJPLB020600090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "负债端成本下降" = @XREF(CP,"BJPLB020600100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "应收账款、长期应收款清收" = @XREF(CP,"BJPLB020600110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "产成品存货压降金额" = @XREF(CP,"BJPLB020600120","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "积极争取社保及税费减免" = @XREF(CP,"BJPLB020600130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他节流" = @XREF(CP,"BJPLB020600140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+			      SET CREATENONMISSINGBLK OFF;
+				ENDFIX /* End Period */
+			  ENDFIX /* End Misc */
+			  
+			ENDFIX /* End Version 2 */
+		  ENDFIX /* End LastYearForecast */
+		  
+	    ENDFIX /* End Element */
+		
+		/* B0205 */
+		
+		FIX("营销活动") /* Element Start */
+          
+		  FIX("本年预算") /* Actual in BJ */
+		    FIX(&CurVersion) /* Target */
+			
+			  FIX(@RELATIVE("YearTotal",0))    
+				/* B0205 */
+                FIX("业务宣传费")
+			      SET CREATENONMISSINGBLK ON;                
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500020","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500130","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500240","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500350","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+  				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("业务招待费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500030","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500140","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500250","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500360","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("广告费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500040","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500150","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500260","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500370","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("咨询费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500050","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500160","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500270","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500380","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+ 				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("中介机构费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500060","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500170","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500280","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500390","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("差旅费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500070","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500180","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500290","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500400","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+ 				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("会议费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500080","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500190","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500300","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500410","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+  				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("赞助费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500090","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500200","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500310","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500420","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("促销费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500100","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500210","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500320","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500430","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX /* End Misc */
+
+                FIX("其他费用")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500110","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500220","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500330","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500440","HQ_SINO","Seg_GEN","Dept_GEN","FY23_OB","Periodic","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX /* End Misc */
+		      ENDFIX /* End Period */
+			  
+			ENDFIX /* End Target */
+		  ENDFIX /* End Actual */
+		  
+		  FIX("上年预计") /* LastYearForecast in BJ */
+		    FIX(&CurVersion) /* Current Version */
+			
+			  FIX("Jan":"Nov")    
+                FIX("业务宣传费","业务招待费","广告费","咨询费","中介机构费","差旅费","会议费","赞助费","促销费","其他费用")
+                  "营业成本-其他非金融业务" = #Missing;
+                  "销售费用-办公及其他费用" = #Missing;
+                  "管理费用-办公及其他费用" = #Missing;
+                  "其他业务成本" = #Missing;
+				ENDFIX
+			  ENDFIX
+			  
+			  FIX("Dec")    
+				
+                FIX("业务宣传费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500020","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500130","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500240","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500350","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+  				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("业务招待费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500030","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500140","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500250","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500360","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("广告费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500040","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500150","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500260","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500370","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("咨询费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500050","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500160","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500270","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500380","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+ 				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("中介机构费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500060","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500170","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500280","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500390","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("差旅费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500070","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500180","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500290","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500400","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+ 				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("会议费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500080","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500190","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500300","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500410","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+  				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("赞助费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500090","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500200","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500310","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500420","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX
+
+                FIX("促销费")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500100","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500210","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500320","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500430","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX /* End Misc */
+
+                FIX("其他费用")
+			      SET CREATENONMISSINGBLK ON;
+                  "营业成本-其他非金融业务" = @XREF(CP,"BJPLB020500110","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "销售费用-办公及其他费用" = @XREF(CP,"BJPLB020500220","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "管理费用-办公及其他费用" = @XREF(CP,"BJPLB020500330","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+                  "其他业务成本" = @XREF(CP,"BJPLB020500440","HQ_SINO","Seg_GEN","Dept_GEN","FCST","FY22","YTD","Dec","Master");
+				  SET CREATENONMISSINGBLK OFF;
+                ENDFIX /* End Misc */
+		      ENDFIX /* End Period */
+			  
+			ENDFIX /* End Version 2 */
+		  ENDFIX /* End LastYearForecast */
+		  
+	    ENDFIX /* End Element */
+		
+	  ENDFIX /* End Project */
+    ENDFIX /* End Product */
+	
+  ENDFIX /* End Entity */
+ENDFIX /* End Year */
+/************ End IncreaseRevenue ReduceCost AdministrativeExpense ****************************************/
